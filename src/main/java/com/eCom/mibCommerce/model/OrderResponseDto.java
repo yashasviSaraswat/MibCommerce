@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @Builder
 public class OrderResponseDto {
     private Integer orderId;
-    private String basketID;
+    private String basketId;
     private ShippingAddress shippingAddress;
     private Long subTotal;
     private Long deliveryCharge;
