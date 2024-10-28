@@ -9,12 +9,20 @@ import ServerError from "../errors/serverError.tsx";
 import BasketPage from "../../features/basket/BasketPage.tsx";
 import Register from "../../features/account/Register.tsx";
 import SignIn from "../../features/account/SignIn.tsx";
+import RequiredAuth from "./RequiredAuth.tsx";
+import CheckOutPage from "../../features/checkOut/CheckOutPage.tsx";
 
 export const router = createBrowserRouter([
     {
         path: '/',
         element: <App />,
         children: [
+            {
+              element:<RequiredAuth />, children:[
+                    {path:'/checkout', element:<CheckOutPage />},
+                ]
+            },
+
             {path:'', element:<HomePage />},
             {path:'store', element:<Catalog />},
             {path:'contact', element:<ContactPage />},

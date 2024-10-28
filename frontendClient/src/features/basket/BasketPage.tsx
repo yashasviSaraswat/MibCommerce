@@ -1,4 +1,5 @@
 import {
+    Box, Button,
     IconButton,
     Paper,
     Table,
@@ -9,12 +10,15 @@ import {
     TableRow,
     Typography
 } from "@mui/material";
+import {Link } from "react-router-dom";
 import DeleteIcon from "@mui/icons-material/Delete";
-import {Product} from "../../app/model/Product.ts";
 import {useAppSelector} from "../../app/store/Store.ts";
 import {useDispatch} from "react-redux";
 import agent from "../../app/api/agent.ts";
 import {Add, Remove} from "@mui/icons-material";
+import {extractImageName, formatPrice} from "../../app/utils/Utils.ts";
+import BasketSummaryPage from "./BasketSummaryPage.tsx";
+import React from "react";
 
 
 export default function BasketPage() {
@@ -33,28 +37,10 @@ export default function BasketPage() {
         BasketActions.incrementItemQuantity(productId, quantity, dispatch);
     };
 
-    // Define the extractImageName function
-    const extractImageName = (item: Product): string | null => {
-        if (item && item.pictureUrl) {
-            const parts = item.pictureUrl.split('/');
-            if (parts.length > 0) {
-                return parts[parts.length - 1];
-            }
-        }
-        return null;
-    };
-
-    // Function to format the price with INR currency symbol
-    const formatPrice = (price: number): string =>{
-        return new Intl.NumberFormat('en-IN', {
-            style: 'currency',
-            currency: 'INR',
-            minimumFractionDigits: 2
-        }).format(price);
-    };
     if(!basket || basket.items.length ===0 ) return <Typography variant="h3">Your basket is empty. Please add few items!!!</Typography>
 
     return (
+        <>
         <TableContainer component={Paper}>
             <Table>
                 <TableHead>
@@ -97,5 +83,16 @@ export default function BasketPage() {
                 </TableBody>
             </Table>
         </TableContainer>
+        <Box mt={2} p={2} bgcolor="background.paper" borderRadius={4}>
+            <BasketSummaryPage/>
+            <Button component={Link as React.ElementType}
+                    to='/checkout'
+                    variant='contained'
+                    size='large'
+                    fullWidth>
+                Checkout from here
+            </Button>
+        </Box>
+        </>
     )
 }
