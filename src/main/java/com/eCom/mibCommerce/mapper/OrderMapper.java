@@ -24,7 +24,7 @@ public interface OrderMapper {
     @Mapping(target = "orderStatus", constant = "Pending")
     OrderResponseDto toOrderResponseDto(Order order);
 
-    @Mapping(target = "orderDate", expression = "java(orderDto.getOrderDate())")
+    @Mapping(target = "orderDate", expression = "java(orderDto.getOrderDate().atStartOfDay())")
     @Mapping(target = "orderStatus", constant = "Pending")
     Order toOrder(OrderDto orderDto);
 
