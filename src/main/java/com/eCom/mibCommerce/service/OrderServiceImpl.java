@@ -27,15 +27,11 @@ public class OrderServiceImpl implements OrderService {
 
     private final OrderRepository orderRepository;
     private final OrderMapper orderMapper;
-    private final BrandRepository brandRepository;
-    private final TypeRepository typeRepository;
     private final BasketService basketService;
 
-    public OrderServiceImpl(OrderRepository orderRepository, OrderMapper orderMapper, BrandRepository brandRepository, TypeRepository typeRepository, BasketService basketService) {
+    public OrderServiceImpl(OrderRepository orderRepository, OrderMapper orderMapper, BasketService basketService) {
         this.orderRepository = orderRepository;
         this.orderMapper = orderMapper;
-        this.brandRepository = brandRepository;
-        this.typeRepository = typeRepository;
         this.basketService = basketService;
     }
 
