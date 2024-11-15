@@ -8,6 +8,11 @@ class MibCommerceApplicationTests {
 
 	@Test
 	void contextLoads() {
+		System.out.println("test: " + this.hashCode());
+	}
+	@Test
+	void contextLoads1() {
+		System.out.println("test: " + this.hashCode());
 	}
 
 }
