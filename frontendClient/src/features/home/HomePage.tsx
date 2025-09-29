@@ -40,7 +40,7 @@ export default function HomePage() {
                 >
                     <Button
                         component={Link}
-                        to="/products"
+                        to="/store"
                         variant="contained"
                         color="primary"
                         size="large"
