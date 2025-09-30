@@ -24,7 +24,7 @@ redis-server.exe --service-start
 ```
 Option B: Run Redis Manually (start only when using project)
 ```
-cd C:\Redis
+cd C:\Program Files\redis
 redis-server.exe
 ```
 
